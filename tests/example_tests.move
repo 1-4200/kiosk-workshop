@@ -1,19 +1,12 @@
 #[test_only]
 module kiosk_workshop::test_example {
     use sui::test_scenario::{Self as ts, ctx};
-    use kiosk_rule::royalty_rule;
-    use sui::kiosk;
-    use sui::test_scenario::{return_shared, take_from_sender, take_shared};
-    use sui::transfer_policy::{TransferPolicy, TransferPolicyCap};
-    use sui::coin::Self;
-    use sui::sui::SUI;
-    use std::option;
+    
     use kiosk_workshop::example::init_for_testing;
     
     const CREATOR: address = @0xA11ce;
     const SELLER: address = @0xB0B;
     const BUYER: address = @0xC0C;
-    
     
     #[test]
     /// Test whole process of minting, (setting up TransferPolicy including royalty rules)
@@ -27,11 +20,11 @@ module kiosk_workshop::test_example {
         {};
         ts::next_tx(scenario, CREATOR); // 3. Setup a royalty rule on TransferPolicy
         {};
-        ts::next_tx(scenario, CREATOR); // 4. Mint NFTs to SELLER
+        ts::next_tx(scenario, CREATOR); // 4. Mint a NFT to SELLER
         {};
-        ts::next_tx(scenario, SELLER); // 5. Create Kiosk and place and list NFTs on Kiosk
+        ts::next_tx(scenario, SELLER); // 5. Create Kiosk and place and list the NFT on Kiosk
         {};
-        ts::next_tx(scenario, BUYER); // 6. Purchase NFTs from Kiosk
+        ts::next_tx(scenario, BUYER); // 6. Purchase the NFT from Kiosk
         {};
         ts::next_tx(scenario, SELLER); // 7. Withdraw balance from Kiosk
         {};
